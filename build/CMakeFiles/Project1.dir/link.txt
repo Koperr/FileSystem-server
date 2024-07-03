@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/Project1.dir/src/main.cpp.o -o /home/beza/Desktop/Project1/bin/Linux/Debug/Project1   -L/home/beza/Desktop/Project1/inc 

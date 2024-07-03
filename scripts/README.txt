@@ -1,0 +1,1 @@
+chmod +x setupCMake.sh compile.sh run.sh

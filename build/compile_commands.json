@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/beza/Desktop/Project1/build",
+  "command": "/usr/bin/c++   -g -std=gnu++17 -o CMakeFiles/Project1.dir/src/main.cpp.o -c /home/beza/Desktop/Project1/src/main.cpp",
+  "file": "/home/beza/Desktop/Project1/src/main.cpp",
+  "output": "CMakeFiles/Project1.dir/src/main.cpp.o"
+}
+]
