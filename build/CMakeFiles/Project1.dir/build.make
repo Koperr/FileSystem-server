@@ -69,10 +69,38 @@ include CMakeFiles/Project1.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Project1.dir/flags.make
 
+CMakeFiles/Project1.dir/src/Commands.cpp.o: CMakeFiles/Project1.dir/flags.make
+CMakeFiles/Project1.dir/src/Commands.cpp.o: /home/beza/Desktop/Project1/src/Commands.cpp
+CMakeFiles/Project1.dir/src/Commands.cpp.o: CMakeFiles/Project1.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/beza/Desktop/Project1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Project1.dir/src/Commands.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project1.dir/src/Commands.cpp.o -MF CMakeFiles/Project1.dir/src/Commands.cpp.o.d -o CMakeFiles/Project1.dir/src/Commands.cpp.o -c /home/beza/Desktop/Project1/src/Commands.cpp
+
+CMakeFiles/Project1.dir/src/Commands.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Project1.dir/src/Commands.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beza/Desktop/Project1/src/Commands.cpp > CMakeFiles/Project1.dir/src/Commands.cpp.i
+
+CMakeFiles/Project1.dir/src/Commands.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Project1.dir/src/Commands.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beza/Desktop/Project1/src/Commands.cpp -o CMakeFiles/Project1.dir/src/Commands.cpp.s
+
+CMakeFiles/Project1.dir/src/FileSystem.cpp.o: CMakeFiles/Project1.dir/flags.make
+CMakeFiles/Project1.dir/src/FileSystem.cpp.o: /home/beza/Desktop/Project1/src/FileSystem.cpp
+CMakeFiles/Project1.dir/src/FileSystem.cpp.o: CMakeFiles/Project1.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/beza/Desktop/Project1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Project1.dir/src/FileSystem.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project1.dir/src/FileSystem.cpp.o -MF CMakeFiles/Project1.dir/src/FileSystem.cpp.o.d -o CMakeFiles/Project1.dir/src/FileSystem.cpp.o -c /home/beza/Desktop/Project1/src/FileSystem.cpp
+
+CMakeFiles/Project1.dir/src/FileSystem.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Project1.dir/src/FileSystem.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beza/Desktop/Project1/src/FileSystem.cpp > CMakeFiles/Project1.dir/src/FileSystem.cpp.i
+
+CMakeFiles/Project1.dir/src/FileSystem.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Project1.dir/src/FileSystem.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beza/Desktop/Project1/src/FileSystem.cpp -o CMakeFiles/Project1.dir/src/FileSystem.cpp.s
+
 CMakeFiles/Project1.dir/src/main.cpp.o: CMakeFiles/Project1.dir/flags.make
 CMakeFiles/Project1.dir/src/main.cpp.o: /home/beza/Desktop/Project1/src/main.cpp
 CMakeFiles/Project1.dir/src/main.cpp.o: CMakeFiles/Project1.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/beza/Desktop/Project1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Project1.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/beza/Desktop/Project1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Project1.dir/src/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project1.dir/src/main.cpp.o -MF CMakeFiles/Project1.dir/src/main.cpp.o.d -o CMakeFiles/Project1.dir/src/main.cpp.o -c /home/beza/Desktop/Project1/src/main.cpp
 
 CMakeFiles/Project1.dir/src/main.cpp.i: cmake_force
@@ -85,15 +113,19 @@ CMakeFiles/Project1.dir/src/main.cpp.s: cmake_force
 
 # Object files for target Project1
 Project1_OBJECTS = \
+"CMakeFiles/Project1.dir/src/Commands.cpp.o" \
+"CMakeFiles/Project1.dir/src/FileSystem.cpp.o" \
 "CMakeFiles/Project1.dir/src/main.cpp.o"
 
 # External object files for target Project1
 Project1_EXTERNAL_OBJECTS =
 
+/home/beza/Desktop/Project1/bin/Linux/Debug/Project1: CMakeFiles/Project1.dir/src/Commands.cpp.o
+/home/beza/Desktop/Project1/bin/Linux/Debug/Project1: CMakeFiles/Project1.dir/src/FileSystem.cpp.o
 /home/beza/Desktop/Project1/bin/Linux/Debug/Project1: CMakeFiles/Project1.dir/src/main.cpp.o
 /home/beza/Desktop/Project1/bin/Linux/Debug/Project1: CMakeFiles/Project1.dir/build.make
 /home/beza/Desktop/Project1/bin/Linux/Debug/Project1: CMakeFiles/Project1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/beza/Desktop/Project1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/beza/Desktop/Project1/bin/Linux/Debug/Project1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/beza/Desktop/Project1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable /home/beza/Desktop/Project1/bin/Linux/Debug/Project1"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Project1.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

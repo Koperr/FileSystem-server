@@ -129,6 +129,54 @@ Project1/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/build
 .PHONY : Project1/fast
 
+src/Commands.o: src/Commands.cpp.o
+.PHONY : src/Commands.o
+
+# target to build an object file
+src/Commands.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/src/Commands.cpp.o
+.PHONY : src/Commands.cpp.o
+
+src/Commands.i: src/Commands.cpp.i
+.PHONY : src/Commands.i
+
+# target to preprocess a source file
+src/Commands.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/src/Commands.cpp.i
+.PHONY : src/Commands.cpp.i
+
+src/Commands.s: src/Commands.cpp.s
+.PHONY : src/Commands.s
+
+# target to generate assembly for a file
+src/Commands.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/src/Commands.cpp.s
+.PHONY : src/Commands.cpp.s
+
+src/FileSystem.o: src/FileSystem.cpp.o
+.PHONY : src/FileSystem.o
+
+# target to build an object file
+src/FileSystem.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/src/FileSystem.cpp.o
+.PHONY : src/FileSystem.cpp.o
+
+src/FileSystem.i: src/FileSystem.cpp.i
+.PHONY : src/FileSystem.i
+
+# target to preprocess a source file
+src/FileSystem.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/src/FileSystem.cpp.i
+.PHONY : src/FileSystem.cpp.i
+
+src/FileSystem.s: src/FileSystem.cpp.s
+.PHONY : src/FileSystem.s
+
+# target to generate assembly for a file
+src/FileSystem.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/src/FileSystem.cpp.s
+.PHONY : src/FileSystem.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -162,6 +210,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Project1"
+	@echo "... src/Commands.o"
+	@echo "... src/Commands.i"
+	@echo "... src/Commands.s"
+	@echo "... src/FileSystem.o"
+	@echo "... src/FileSystem.i"
+	@echo "... src/FileSystem.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

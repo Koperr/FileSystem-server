@@ -1,5 +1,6 @@
-CMakeFiles/Project1.dir/src/main.cpp.o: \
- /home/beza/Desktop/Project1/src/main.cpp /usr/include/stdc-predef.h \
+CMakeFiles/Project1.dir/src/FileSystem.cpp.o: \
+ /home/beza/Desktop/Project1/src/FileSystem.cpp \
+ /usr/include/stdc-predef.h /home/beza/Desktop/Project1/inc/FileSystem.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -148,9 +149,9 @@ CMakeFiles/Project1.dir/src/main.cpp.o: \
  /usr/include/c++/13/bits/locale_facets.tcc \
  /usr/include/c++/13/bits/basic_ios.tcc \
  /usr/include/c++/13/bits/ostream.tcc /usr/include/c++/13/istream \
- /usr/include/c++/13/bits/istream.tcc \
- /home/beza/Desktop/Project1/inc/FileSystem.h /usr/include/c++/13/vector \
+ /usr/include/c++/13/bits/istream.tcc /usr/include/c++/13/vector \
  /usr/include/c++/13/bits/stl_uninitialized.h \
  /usr/include/c++/13/bits/stl_vector.h \
  /usr/include/c++/13/bits/stl_bvector.h \
- /usr/include/c++/13/bits/vector.tcc
+ /usr/include/c++/13/bits/vector.tcc \
+ /home/beza/Desktop/Project1/inc/Commands.h
