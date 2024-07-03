@@ -4,16 +4,17 @@
 #include <string>
 #include <vector>
 
+#include "Folder.h"
+
 class FileSystem
 {
 public:
-    FileSystem() : m_Exit(false), currentPath("Home") {};
 
     void run();
 
-
     std::string currentPath;
 
+    FileSystem() : m_Exit(false), currentPath("Home/") {};
 private:
     std::string m_Input;
     bool m_Exit;

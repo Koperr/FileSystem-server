@@ -1,11 +1,15 @@
 #pragma once
 
 #include "FileSystem.h"
+#include <map>
+#include <functional>
+
+
 
 class Commands : public FileSystem
 {
 public:
-    void checkInput();
+    Commands();
 
     void Mkdir();
     void Rmdir();
@@ -16,6 +20,9 @@ public:
     void Cat();
     void Echo();
 
-private:
+    void checkInput(const std::string& input);
 
+private:
+    std::map<std::string, std::function<void()>> commandMap;
+    
 };
