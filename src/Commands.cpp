@@ -1,73 +1,109 @@
 #include "Commands.h"
 
+void Commands::checkCommand(const std::string& str)
+{
+    // setting "command" to the first word
+    std::string command;
+    int spacePos = str.find(" ");
+    if(spacePos != std::string::npos)
+        command = str.substr(0, spacePos);
+    else if(str == "")
+        return;
+    else
+        command = str;
+
+    // checking if "command" is a command
+    if(commandMap.find(command) != commandMap.end())
+    {
+        auto function = commandMap[command];
+        function(command);
+    }
+    else if(command == "")
+        return;
+    else
+        std::cout << "[ERROR] There is no command named [" << command << "], try again\n";
+}
+
+std::string Commands::findFlag(const std::string& str)
+{
+    std::string flag;
+    int spacePos = str.find(" ");
+    int lengh = str.length() - spacePos;
+
+    // set the "flag" to the "str" without the first word
+    if(spacePos != std::string::npos)
+        flag = str.substr(spacePos + 1, lengh);
+
+
+    if(flag.find(" ") == std::string::npos && flag.find("\n") == std::string::npos)
+    {
+        std::cout << "FLAG: [" << flag << "]\n";
+        return flag;
+    }
+    else
+    {
+        std::cout << "[ERROR] Wrong flag used\n";
+        return "0";
+    }
+}
+
 void Commands::checkInput(const std::string& input)
 {
-    std::string temp_str;
-    int spacePos = input.find(" ");
-    // if found space, assinging the command to spacePos
-    if(spacePos != std::string::npos)
-        temp_str = input.substr(0, spacePos);
-    else if(input == "")
-        return;
-    else
-        temp_str = input;
-    // checking if temp_str is equal to one of the command names
-    if(commandMap.find(temp_str) != commandMap.end())
-    {
-        auto function = commandMap[temp_str];
-        function();
-    }
-    else if(temp_str == "")
-        return;
-    else
-        std::cout << "There is no command named [" << temp_str << "], try again\n";
+    checkCommand(input);
+    
+    std::string flag = findFlag(input);
 }
 
 Commands::Commands()
     : commandMap{
-        {"mkdir", [this]() {Mkdir();}},
-        {"rmdir", [this]() {Rmdir();}},
-        {"cd",    [this]() {Cd();   }},
-        {"ls",    [this]() {Ls();   }},
-        {"pwd",   [this]() {Pwd();  }},
-        {"touch", [this]() {Touch();}},
-        {"cat",   [this]() {Cat();  }},
-        {"echo",  [this]() {Echo(); }}
+        {"exit",  [this](const std::string& flag) {Exit(flag); }},
+        {"mkdir", [this](const std::string& flag) {Mkdir(flag);}},
+        {"rmdir", [this](const std::string& flag) {Rmdir(flag);}},
+        {"cd",    [this](const std::string& flag) {Cd(flag);   }},
+        {"ls",    [this](const std::string& flag) {Ls(flag);   }},
+        {"pwd",   [this](const std::string& flag) {Pwd(flag);  }},
+        {"touch", [this](const std::string& flag) {Touch(flag);}},
+        {"cat",   [this](const std::string& flag) {Cat(flag);  }},
+        {"echo",  [this](const std::string& flag) {Echo(flag); }}
     }
 {
     
 }
 
-void Commands::Mkdir()
+void Commands::Exit(const std::string& flag)
 {
-    std::cout << "Used command: Mkdir\n";
+    std::cout << "COMMAND: [Exit]\n";
 }
-void Commands::Rmdir()
+void Commands::Mkdir(const std::string& flag)
 {
-    std::cout << "Used command: Rmdir\n";
+    std::cout << "COMMAND: [Mkdir]\n";
 }
-void Commands::Cd()
+void Commands::Rmdir(const std::string& flag)
 {
-    std::cout << "Used command: Cd\n";
+    std::cout << "COMMAND: [Rmdir]\n";
 }
-void Commands::Ls()
+void Commands::Cd(const std::string& flag)
 {
-    std::cout << "Used command: Ls\n";
+    std::cout << "COMMAND: [Cd]\n";
 }
-void Commands::Pwd()
+void Commands::Ls(const std::string& flag)
 {
-    std::cout << "Used command: Pwd\n";
+    std::cout << "COMMAND: [Ls]\n";
+}
+void Commands::Pwd(const std::string& flag)
+{
+    std::cout << "COMMAND: [Pwd]\n";
     std::cout << "Working directory: " << m_CurrentPath << std::endl;
 }
-void Commands::Touch()
+void Commands::Touch(const std::string& flag)
 {
-    std::cout << "Used command: Touch\n";
+    std::cout << "COMMAND: [Touch]\n";
 }
-void Commands::Cat()
+void Commands::Cat(const std::string& flag)
 {
-    std::cout << "Used command: Cat\n";
+    std::cout << "COMMAND: [Cat]\n";
 }
-void Commands::Echo()
+void Commands::Echo(const std::string& flag)
 {
-    std::cout << "Used command: Echo\n";
+    std::cout << "COMMAND: [Echo]\n";
 }
