@@ -154,7 +154,8 @@ CMakeFiles/Project1.dir/src/Commands.cpp.o: \
  /usr/include/c++/13/bits/stl_uninitialized.h \
  /usr/include/c++/13/bits/stl_vector.h \
  /usr/include/c++/13/bits/stl_bvector.h \
- /usr/include/c++/13/bits/vector.tcc /usr/include/c++/13/map \
+ /usr/include/c++/13/bits/vector.tcc \
+ /home/beza/Desktop/Project1/inc/Folder.h /usr/include/c++/13/map \
  /usr/include/c++/13/bits/stl_tree.h \
  /usr/include/c++/13/ext/aligned_buffer.h \
  /usr/include/c++/13/bits/node_handle.h \

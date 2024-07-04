@@ -177,6 +177,30 @@ src/FileSystem.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/src/FileSystem.cpp.s
 .PHONY : src/FileSystem.cpp.s
 
+src/Folder.o: src/Folder.cpp.o
+.PHONY : src/Folder.o
+
+# target to build an object file
+src/Folder.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/src/Folder.cpp.o
+.PHONY : src/Folder.cpp.o
+
+src/Folder.i: src/Folder.cpp.i
+.PHONY : src/Folder.i
+
+# target to preprocess a source file
+src/Folder.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/src/Folder.cpp.i
+.PHONY : src/Folder.cpp.i
+
+src/Folder.s: src/Folder.cpp.s
+.PHONY : src/Folder.s
+
+# target to generate assembly for a file
+src/Folder.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/src/Folder.cpp.s
+.PHONY : src/Folder.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -216,6 +240,9 @@ help:
 	@echo "... src/FileSystem.o"
 	@echo "... src/FileSystem.i"
 	@echo "... src/FileSystem.s"
+	@echo "... src/Folder.o"
+	@echo "... src/Folder.i"
+	@echo "... src/Folder.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

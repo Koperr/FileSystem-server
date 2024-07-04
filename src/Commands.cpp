@@ -20,19 +20,19 @@ void Commands::checkInput(const std::string& input)
     else if(temp_str == "")
         return;
     else
-        std::cout << "There is no command named '" << temp_str << "', try again\n";
+        std::cout << "There is no command named [" << temp_str << "], try again\n";
 }
 
 Commands::Commands()
     : commandMap{
-        {"mkdir", [this]() {Mkdir();         }},
-        {"rmdir", [this]() {Rmdir();         }},
-        {"cd",    [this]() {Cd();            }},
-        {"ls",    [this]() {Ls();            }},
-        {"pwd",   [this]() {Pwd();           }},
-        {"touch", [this]() {Touch();         }},
-        {"cat",   [this]() {Commands::Cat(); }},
-        {"echo",  [this]() {Commands::Echo();}}
+        {"mkdir", [this]() {Mkdir();}},
+        {"rmdir", [this]() {Rmdir();}},
+        {"cd",    [this]() {Cd();   }},
+        {"ls",    [this]() {Ls();   }},
+        {"pwd",   [this]() {Pwd();  }},
+        {"touch", [this]() {Touch();}},
+        {"cat",   [this]() {Cat();  }},
+        {"echo",  [this]() {Echo(); }}
     }
 {
     
@@ -57,7 +57,7 @@ void Commands::Ls()
 void Commands::Pwd()
 {
     std::cout << "Used command: Pwd\n";
-    std::cout << "Working directory: " << currentPath << std::endl;
+    std::cout << "Working directory: " << m_CurrentPath << std::endl;
 }
 void Commands::Touch()
 {

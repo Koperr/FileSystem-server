@@ -9,21 +9,13 @@
 class FileSystem
 {
 public:
-
     void run();
 
-    std::string currentPath;
+    FileSystem() : m_Exit(false), m_CurrentPath("Home/"){};
 
-    FileSystem() : m_Exit(false), currentPath("Home/") {};
+    std::string m_CurrentPath;
+    //std::vector<Folder> dirTree;
 private:
     std::string m_Input;
     bool m_Exit;
-};
-
-class Folder : public FileSystem
-{
-public:
-    Folder(const std::string& name, const std::string& path);
-private:
-
 };
