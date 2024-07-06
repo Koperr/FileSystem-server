@@ -13,12 +13,6 @@
 },
 {
   "directory": "/home/beza/Desktop/Project1/build",
-  "command": "/usr/bin/c++  -I/home/beza/Desktop/Project1/inc  -Wall -std=c++17 -g -o CMakeFiles/Project1.dir/src/Folder.cpp.o -c /home/beza/Desktop/Project1/src/Folder.cpp",
-  "file": "/home/beza/Desktop/Project1/src/Folder.cpp",
-  "output": "CMakeFiles/Project1.dir/src/Folder.cpp.o"
-},
-{
-  "directory": "/home/beza/Desktop/Project1/build",
   "command": "/usr/bin/c++  -I/home/beza/Desktop/Project1/inc  -Wall -std=c++17 -g -o CMakeFiles/Project1.dir/src/main.cpp.o -c /home/beza/Desktop/Project1/src/main.cpp",
   "file": "/home/beza/Desktop/Project1/src/main.cpp",
   "output": "CMakeFiles/Project1.dir/src/main.cpp.o"
