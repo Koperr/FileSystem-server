@@ -1,1 +1,1 @@
-/usr/bin/c++  -Wall -std=c++17 -g CMakeFiles/Project1.dir/src/Commands.cpp.o CMakeFiles/Project1.dir/src/FileSystem.cpp.o CMakeFiles/Project1.dir/src/main.cpp.o -o /home/beza/Desktop/Project1/bin/Linux/Debug/Project1 
+/usr/bin/c++  -Wall -std=c++17 -g CMakeFiles/Project1.dir/src/Commands.cpp.o CMakeFiles/Project1.dir/src/FileSystem.cpp.o CMakeFiles/Project1.dir/src/main.cpp.o -o /home/beza/Desktop/FileSystem/bin/Linux/Debug/Project1 

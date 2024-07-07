@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/beza/Desktop/Project1/bin/Linux/Debug/Project1"
-  "/home/beza/Desktop/Project1/bin/Linux/Debug/Project1.pdb"
+  "/home/beza/Desktop/FileSystem/bin/Linux/Debug/Project1"
+  "/home/beza/Desktop/FileSystem/bin/Linux/Debug/Project1.pdb"
   "CMakeFiles/Project1.dir/src/Commands.cpp.o"
   "CMakeFiles/Project1.dir/src/Commands.cpp.o.d"
   "CMakeFiles/Project1.dir/src/FileSystem.cpp.o"

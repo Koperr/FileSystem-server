@@ -9,7 +9,7 @@ bool FileSystem::m_Exit = false;
 FileSystem::FileSystem()
 {
     root.name = "/";
-    currentPath = root.name;
+    m_currentPath = root.name;
 }
 
 
@@ -18,10 +18,11 @@ void FileSystem::run()
     while(!m_Exit)
     {
         // printf("\033[36;1m"); https://man7.org/linux/man-pages/man5/terminal-colors.d.5.html
-        printf("\033[36m");
-        //std::cout << currentPath;
-        std::cout << cmd.currentPath;
+        printf("\033[36;1m");
+        std::cout << cmd.m_currentPath;
+        printf("\033[0;36m ");
         std::getline(std::cin, m_Input);
+        printf("\033[31m");
         cmd.checkInput(m_Input);
     }
     
@@ -94,13 +95,17 @@ Directory* FileSystem::navigateTo(const std::string& path)
     std::string token;
     while (std::getline(iss, token, '/'))
     {
-        if (!token.empty() && current->subdirectories.find(token) != current->subdirectories.end())
+        if (!token.empty())
         {
-            current = &current->subdirectories[token];
-        }
-        else
-        {
+            if(current->subdirectories.find(token) != current->subdirectories.end())
+            {
+                current = &current->subdirectories[token];
+            }
+            else
+            {
+                std::cout << "Directory not found: [" << token << "] in path: [" << path << "]\n";
             return nullptr;
+            }
         }
     }
     return current;

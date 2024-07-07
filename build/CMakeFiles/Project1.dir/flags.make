@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/beza/Desktop/Project1/inc
+CXX_INCLUDES = -I/home/beza/Desktop/FileSystem/inc
 
 CXX_FLAGS =  -Wall -std=c++17 -g
 

@@ -1,5 +1,6 @@
 CMakeFiles/Project1.dir/src/main.cpp.o: \
- /home/beza/Desktop/Project1/src/main.cpp /usr/include/stdc-predef.h \
+ /home/beza/Desktop/FileSystem/src/main.cpp /usr/include/stdc-predef.h \
+ /home/beza/Desktop/FileSystem/inc/FileSystem.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -148,12 +149,15 @@ CMakeFiles/Project1.dir/src/main.cpp.o: \
  /usr/include/c++/13/bits/locale_facets.tcc \
  /usr/include/c++/13/bits/basic_ios.tcc \
  /usr/include/c++/13/bits/ostream.tcc /usr/include/c++/13/istream \
- /usr/include/c++/13/bits/istream.tcc \
- /home/beza/Desktop/Project1/inc/FileSystem.h /usr/include/c++/13/map \
+ /usr/include/c++/13/bits/istream.tcc /usr/include/c++/13/map \
  /usr/include/c++/13/bits/stl_tree.h \
  /usr/include/c++/13/ext/aligned_buffer.h \
  /usr/include/c++/13/bits/node_handle.h \
  /usr/include/c++/13/bits/stl_map.h \
  /usr/include/c++/13/bits/stl_multimap.h \
  /usr/include/c++/13/bits/erase_if.h /usr/include/c++/13/sstream \
- /usr/include/c++/13/bits/sstream.tcc /usr/include/c++/13/stdlib.h
+ /usr/include/c++/13/bits/sstream.tcc /usr/include/c++/13/stdlib.h \
+ /usr/include/c++/13/fstream /usr/include/c++/13/bits/codecvt.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
+ /usr/include/c++/13/bits/fstream.tcc

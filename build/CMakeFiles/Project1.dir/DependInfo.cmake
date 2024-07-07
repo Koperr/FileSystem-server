@@ -8,9 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/beza/Desktop/Project1/src/Commands.cpp" "CMakeFiles/Project1.dir/src/Commands.cpp.o" "gcc" "CMakeFiles/Project1.dir/src/Commands.cpp.o.d"
-  "/home/beza/Desktop/Project1/src/FileSystem.cpp" "CMakeFiles/Project1.dir/src/FileSystem.cpp.o" "gcc" "CMakeFiles/Project1.dir/src/FileSystem.cpp.o.d"
-  "/home/beza/Desktop/Project1/src/main.cpp" "CMakeFiles/Project1.dir/src/main.cpp.o" "gcc" "CMakeFiles/Project1.dir/src/main.cpp.o.d"
+  "/home/beza/Desktop/FileSystem/src/Commands.cpp" "CMakeFiles/Project1.dir/src/Commands.cpp.o" "gcc" "CMakeFiles/Project1.dir/src/Commands.cpp.o.d"
+  "/home/beza/Desktop/FileSystem/src/FileSystem.cpp" "CMakeFiles/Project1.dir/src/FileSystem.cpp.o" "gcc" "CMakeFiles/Project1.dir/src/FileSystem.cpp.o.d"
+  "/home/beza/Desktop/FileSystem/src/main.cpp" "CMakeFiles/Project1.dir/src/main.cpp.o" "gcc" "CMakeFiles/Project1.dir/src/main.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

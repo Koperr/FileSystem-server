@@ -1,7 +1,7 @@
 CMakeFiles/Project1.dir/src/Commands.cpp.o: \
- /home/beza/Desktop/Project1/src/Commands.cpp /usr/include/stdc-predef.h \
- /home/beza/Desktop/Project1/inc/Commands.h \
- /home/beza/Desktop/Project1/inc/FileSystem.h \
+ /home/beza/Desktop/FileSystem/src/Commands.cpp \
+ /usr/include/stdc-predef.h /home/beza/Desktop/FileSystem/inc/Commands.h \
+ /home/beza/Desktop/FileSystem/inc/FileSystem.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -158,7 +158,11 @@ CMakeFiles/Project1.dir/src/Commands.cpp.o: \
  /usr/include/c++/13/bits/stl_multimap.h \
  /usr/include/c++/13/bits/erase_if.h /usr/include/c++/13/sstream \
  /usr/include/c++/13/bits/sstream.tcc /usr/include/c++/13/stdlib.h \
- /usr/include/c++/13/functional /usr/include/c++/13/bits/std_function.h \
+ /usr/include/c++/13/fstream /usr/include/c++/13/bits/codecvt.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
+ /usr/include/c++/13/bits/fstream.tcc /usr/include/c++/13/functional \
+ /usr/include/c++/13/bits/std_function.h \
  /usr/include/c++/13/unordered_map \
  /usr/include/c++/13/bits/unordered_map.h \
  /usr/include/c++/13/bits/hashtable.h \

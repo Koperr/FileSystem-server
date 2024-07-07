@@ -1,5 +1,3 @@
-#include<iostream>
-
 #include "FileSystem.h"
 
 int main()
@@ -7,6 +5,4 @@ int main()
     FileSystem fsys;
 
     fsys.run();
-
-    std::cout << "dupa\n";
 }

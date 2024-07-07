@@ -4,8 +4,8 @@
 #include <string>
 #include <map>
 #include <sstream>
-
 #include <stdlib.h>
+#include <fstream>
 
 
 struct File
@@ -40,15 +40,14 @@ public:
     std::string ReadFile(const std::string& path, const std::string& filename);
     
 protected:
-    std::string currentPath;
+    std::string m_currentPath;
+    std::string m_Input;
 
     Directory* navigateTo(const std::string& path);
 
 private:
     Directory root;
 
-
     static bool m_Exit;
 
-    std::string m_Input;
 };
