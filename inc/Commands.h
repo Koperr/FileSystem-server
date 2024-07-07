@@ -11,7 +11,7 @@ class Commands : public FileSystem
 public:
     Commands();
     void getCommand(const std::string& str);
-    std::string getFlag(const std::string& str);
+    void getFlag(const std::string& str);
 
     void Exit();
     void Mkdir();

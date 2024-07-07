@@ -19,7 +19,8 @@ void FileSystem::run()
     {
         // printf("\033[36;1m"); https://man7.org/linux/man-pages/man5/terminal-colors.d.5.html
         printf("\033[36m");
-        std::cout << currentPath;
+        //std::cout << currentPath;
+        std::cout << cmd.currentPath;
         std::getline(std::cin, m_Input);
         cmd.checkInput(m_Input);
     }

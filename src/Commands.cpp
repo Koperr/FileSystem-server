@@ -1,5 +1,43 @@
 #include "Commands.h"
 
+Commands::Commands()
+    : commandMap{
+        {"exit",  [this]() {Exit(); }},
+        {"mkdir", [this]() {Mkdir();}},
+        {"rmdir", [this]() {Rmdir();}},
+        {"cd",    [this]() {Cd();   }},
+        {"ls",    [this]() {Ls();   }},
+        {"pwd",   [this]() {Pwd();  }},
+        {"touch", [this]() {Touch();}},
+        {"cat",   [this]() {Cat();  }},
+        {"echo",  [this]() {Echo(); }}
+    }
+{
+}
+
+void Commands::getFlag(const std::string& str)
+{
+    int spacePos = str.find(" ");
+    int lengh = str.length() - spacePos;
+
+    // If there is no spacepos, sets the value of flag to substr of everything exept the first word
+    if(spacePos != std::string::npos)
+        m_Flag = str.substr(spacePos + 1, lengh);
+    else
+        m_Flag = "0";
+
+    // If there is forbidden symbol in the value, it sets the value of flag to "0"
+    if(m_Flag.find(" ") == std::string::npos && m_Flag.find("\n") == std::string::npos)
+    {
+        return;
+    }
+    else
+    {
+        m_Flag = "0";
+        std::cout << "[ERROR] Wrong flag\n";
+    }
+}
+
 void Commands::getCommand(const std::string& str)
 {
     int spacePos = str.find(" ");
@@ -20,28 +58,7 @@ void Commands::getCommand(const std::string& str)
     else if(m_Command == "")
         return;
     else
-        std::cout << "[ERROR] There is no command named [" << m_Command << "], try again\n";
-}
-
-std::string Commands::getFlag(const std::string& str)
-{
-    int spacePos = str.find(" ");
-    int lengh = str.length() - spacePos;
-
-    // set the "flag" to the "str" without the first word
-    if(spacePos != std::string::npos)
-        m_Flag = str.substr(spacePos + 1, lengh);
-
-
-    if(m_Flag.find(" ") == std::string::npos && m_Flag.find("\n") == std::string::npos)
-    {
-        return m_Flag;
-    }
-    else
-    {
-        std::cout << "[ERROR] Wrong flag used\n";
-        return "0";
-    }
+        std::cout << "[ERROR] Wrong command [" << m_Command << "]\n";
 }
 
 void Commands::checkInput(const std::string& input)
@@ -51,24 +68,8 @@ void Commands::checkInput(const std::string& input)
     getFlag(input);
 
     getCommand(input);
-    
 }
 
-Commands::Commands()
-    : commandMap{
-        {"exit",  [this]() {Exit(); }},
-        {"mkdir", [this]() {Mkdir();}},
-        {"rmdir", [this]() {Rmdir();}},
-        {"cd",    [this]() {Cd();   }},
-        {"ls",    [this]() {Ls();   }},
-        {"pwd",   [this]() {Pwd();  }},
-        {"touch", [this]() {Touch();}},
-        {"cat",   [this]() {Cat();  }},
-        {"echo",  [this]() {Echo(); }}
-    }
-{
-    
-}
 
 void Commands::Exit()
 {
@@ -77,38 +78,50 @@ void Commands::Exit()
 
 void Commands::Mkdir()
 {
-    std::string dirname = getFlag(m_Input);
+    if(m_Flag != "0")
+    {
+    std::string dirname = m_Flag;
     CreateDirectory(currentPath, dirname);
+    }
 }
 
 void Commands::Rmdir()
 {
-    std::string dirname = getFlag(m_Input);
+    if(m_Flag != "0")
+    {
+    std::string dirname = m_Flag;
     DeleteDirectory(currentPath, dirname);
+    }
 }
 
 void Commands::Cd()
 {
-    if (navigateTo(currentPath)->subdirectories.find(getFlag(m_Input)) != navigateTo(currentPath)->subdirectories.end())
+    if(m_Flag != "0")
+    {
+    if (navigateTo(currentPath)->subdirectories.find(m_Flag) != navigateTo(currentPath)->subdirectories.end())
     {
         if(currentPath != "/")
         {
-            this->currentPath += "/" + getFlag(m_Input);
-            std::cout << getFlag(m_Input);
+            currentPath += "/" + m_Flag + "/";
+            std::cout << m_Flag;
         }
         else
         {
-            this->currentPath += getFlag(m_Input);
-
+            currentPath += m_Flag + "/";
         }
     }
-    else { std::cout << "Wrong path, try again\n"; }
+    else
+        std::cout << "Wrong path, try again\n";
+    }
 }
 
 void Commands::Ls()
 {
-    for(auto dirPair : navigateTo(currentPath)->subdirectories)
-        std::cout << dirPair.first << std::endl;
+    for(auto const& x : navigateTo(currentPath)->subdirectories)
+        std::cout << x.first << std::endl;
+
+    //for(auto dirPair : navigateTo(currentPath)->subdirectories)
+    //    std::cout << dirPair.first << std::endl;
 }
 
 void Commands::Pwd()
