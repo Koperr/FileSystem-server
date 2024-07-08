@@ -6,3 +6,5 @@ int main()
 
     fsys.run();
 }
+
+// przed zabawa w gita
