@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/beza/Desktop/FileSystem/src/Commands.cpp" "CMakeFiles/Project1.dir/src/Commands.cpp.o" "gcc" "CMakeFiles/Project1.dir/src/Commands.cpp.o.d"
   "/home/beza/Desktop/FileSystem/src/FileSystem.cpp" "CMakeFiles/Project1.dir/src/FileSystem.cpp.o" "gcc" "CMakeFiles/Project1.dir/src/FileSystem.cpp.o.d"
+  "/home/beza/Desktop/FileSystem/src/Memento.cpp" "CMakeFiles/Project1.dir/src/Memento.cpp.o" "gcc" "CMakeFiles/Project1.dir/src/Memento.cpp.o.d"
   "/home/beza/Desktop/FileSystem/src/main.cpp" "CMakeFiles/Project1.dir/src/main.cpp.o" "gcc" "CMakeFiles/Project1.dir/src/main.cpp.o.d"
   )
 

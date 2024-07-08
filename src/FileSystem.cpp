@@ -3,6 +3,9 @@
 
 Commands cmd;
 
+Originator originator;
+CareTaker caretaker;
+
 bool FileSystem::m_Exit = false;
 
 
@@ -17,7 +20,7 @@ void FileSystem::run()
 {
     while(!m_Exit)
     {
-        // printf("\033[36;1m"); https://man7.org/linux/man-pages/man5/terminal-colors.d.5.html
+        // https://man7.org/linux/man-pages/man5/terminal-colors.d.5.html
         printf("\033[36;1m");
         std::cout << cmd.m_currentPath;
         printf("\033[0;36m ");
@@ -34,6 +37,8 @@ void FileSystem::CreateFile(const std::string& path, const std::string& filename
     Directory* dir = navigateTo(path);
     if (dir)
     {
+        originator.setState(*dir);
+        caretaker.AddMemento(originator.SaveStateToMemento());
         dir->files[filename] = {filename, ""};
     }
 }

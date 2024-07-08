@@ -21,6 +21,8 @@ struct Directory
     std::map<std::string, File> files;
 };
 
+#include "Memento.h"
+
 class FileSystem
 {
 public:

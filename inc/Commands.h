@@ -21,7 +21,8 @@ public:
         {"touch", [this]() {Touch();}},
         {"cat",   [this]() {Cat();  }},
         {"echo",  [this]() {Echo(); }},
-        {"undo",  [this]() {Undo(); }}
+        {"undo",  [this]() {Undo(); }},
+        {"mv",    [this]() {Mv(); }}
     } {}
 
     void checkInput(const std::string& input);
@@ -39,6 +40,7 @@ public:
     void Cat();
     void Echo();
     void Undo();
+    void Mv();
 
 
 private:

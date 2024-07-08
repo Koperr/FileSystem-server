@@ -82,6 +82,7 @@ void Commands::Mkdir()
 {
     if(m_Flag1 != "0")
     {
+    
     std::string dirname = m_Flag1;
     CreateDirectory(m_currentPath, dirname);
     }
@@ -146,10 +147,10 @@ void Commands::Ls()
     {
         std::cout << "Listing contents of: [" << m_currentPath << "]\n";
         printf("\033[1;32m");
-        for(auto const& folder : navigateTo(m_currentPath)->subdirectories)
+        for(auto const& folder : dir->subdirectories)
             std::cout << folder.first << std::endl;
         printf("\033[1;35m");
-        for(auto const& file : navigateTo(m_currentPath)->files)
+        for(auto const& file : dir->files)
             std::cout << file.first << std::endl;
         printf("\033[0;31m");
 
@@ -202,4 +203,32 @@ void Commands::Echo()
 void Commands::Undo()
 {
 
+}
+
+void Commands::Mv()
+{
+    Directory* dir = navigateTo(m_currentPath);
+    if(dir && m_Flag1 != "0" && m_Flag2 != "0")
+    {
+        std::cout << "command mv\n";
+
+        auto subdirIt = dir->subdirectories.find(m_Flag1);
+        if(subdirIt != dir->subdirectories.end())
+        {
+            Directory subdir = subdirIt->second;
+            subdir.name = m_Flag2;
+            dir->subdirectories.erase(subdirIt);
+            dir->subdirectories[m_Flag2] = subdir;
+        }
+
+
+        auto fileIt = dir->files.find(m_Flag1);
+        if(fileIt != dir->files.end())
+        {
+            File file = fileIt->second;
+            file.name = m_Flag2;
+            dir->files.erase(fileIt);
+            dir->files[m_Flag2] = file;
+        }
+    }
 }

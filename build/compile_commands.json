@@ -13,6 +13,12 @@
 },
 {
   "directory": "/home/beza/Desktop/FileSystem/build",
+  "command": "/usr/bin/c++  -I/home/beza/Desktop/FileSystem/inc  -Wall -std=c++17 -g -o CMakeFiles/Project1.dir/src/Memento.cpp.o -c /home/beza/Desktop/FileSystem/src/Memento.cpp",
+  "file": "/home/beza/Desktop/FileSystem/src/Memento.cpp",
+  "output": "CMakeFiles/Project1.dir/src/Memento.cpp.o"
+},
+{
+  "directory": "/home/beza/Desktop/FileSystem/build",
   "command": "/usr/bin/c++  -I/home/beza/Desktop/FileSystem/inc  -Wall -std=c++17 -g -o CMakeFiles/Project1.dir/src/main.cpp.o -c /home/beza/Desktop/FileSystem/src/main.cpp",
   "file": "/home/beza/Desktop/FileSystem/src/main.cpp",
   "output": "CMakeFiles/Project1.dir/src/main.cpp.o"

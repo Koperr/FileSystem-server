@@ -1,0 +1,7 @@
+*.log
+*.tmp
+
+/bin/
+/build/
+
+.vscode/

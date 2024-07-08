@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Project1.dir/src/Commands.cpp.o.d"
   "CMakeFiles/Project1.dir/src/FileSystem.cpp.o"
   "CMakeFiles/Project1.dir/src/FileSystem.cpp.o.d"
+  "CMakeFiles/Project1.dir/src/Memento.cpp.o"
+  "CMakeFiles/Project1.dir/src/Memento.cpp.o.d"
   "CMakeFiles/Project1.dir/src/main.cpp.o"
   "CMakeFiles/Project1.dir/src/main.cpp.o.d"
 )

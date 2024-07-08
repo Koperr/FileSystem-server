@@ -177,6 +177,30 @@ src/FileSystem.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/src/FileSystem.cpp.s
 .PHONY : src/FileSystem.cpp.s
 
+src/Memento.o: src/Memento.cpp.o
+.PHONY : src/Memento.o
+
+# target to build an object file
+src/Memento.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/src/Memento.cpp.o
+.PHONY : src/Memento.cpp.o
+
+src/Memento.i: src/Memento.cpp.i
+.PHONY : src/Memento.i
+
+# target to preprocess a source file
+src/Memento.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/src/Memento.cpp.i
+.PHONY : src/Memento.cpp.i
+
+src/Memento.s: src/Memento.cpp.s
+.PHONY : src/Memento.s
+
+# target to generate assembly for a file
+src/Memento.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/src/Memento.cpp.s
+.PHONY : src/Memento.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -216,6 +240,9 @@ help:
 	@echo "... src/FileSystem.o"
 	@echo "... src/FileSystem.i"
 	@echo "... src/FileSystem.s"
+	@echo "... src/Memento.o"
+	@echo "... src/Memento.i"
+	@echo "... src/Memento.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
