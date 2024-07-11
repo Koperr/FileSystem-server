@@ -1,7 +1,7 @@
 *.log
 *.tmp
 
-/bin/
-/build/
+bin/
+build/
 
-/.vscode/
+.vscode/
