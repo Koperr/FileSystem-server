@@ -2,7 +2,21 @@
 
 #include <vector>
 #include <iostream>
-#include "StructFile&Directory.h"
+#include <map>
+//#include "StructFile&Directory.h"
+
+struct File
+{
+    std::string name;
+    std::string content;
+};
+
+struct Directory
+{
+    std::string name;
+    std::map<std::string, Directory> subdirectories;
+    std::map<std::string, File> files;
+};
 
 
 class Memento

@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <fstream>
 
-#include "StructFile&Directory.h"
+//#include "StructFile&Directory.h"
 #include "Commands.h"
 #include "Memento.h"
 
