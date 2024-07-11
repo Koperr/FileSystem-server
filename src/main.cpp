@@ -7,4 +7,4 @@ int main()
     fsys.run();
 }
 
-// przed zabawa w gita
+// przed zabawa w gita 1
