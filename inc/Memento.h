@@ -1,8 +1,8 @@
 #pragma once
 
 #include <vector>
-
-#include "FileSystem.h"
+#include <iostream>
+#include "StructFile&Directory.h"
 
 
 class Memento
@@ -37,8 +37,10 @@ class CareTaker
 {
 public:
     void AddMemento(Memento memento);
-    Memento GetMemento(int index);
+    Memento GetMemento(std::vector<Memento>::size_type index);
 
-private:
+    
     std::vector<Memento> mementoList;
+private:
 };
+

@@ -5,6 +5,7 @@ CMakeFiles/Project1.dir/src/Commands.cpp.o: /home/beza/Desktop/FileSystem/src/Co
   /home/beza/Desktop/FileSystem/inc/Commands.h \
   /home/beza/Desktop/FileSystem/inc/FileSystem.h \
   /home/beza/Desktop/FileSystem/inc/Memento.h \
+  /home/beza/Desktop/FileSystem/inc/StructFile&Directory.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
@@ -229,6 +230,7 @@ CMakeFiles/Project1.dir/src/FileSystem.cpp.o: /home/beza/Desktop/FileSystem/src/
   /home/beza/Desktop/FileSystem/inc/Commands.h \
   /home/beza/Desktop/FileSystem/inc/FileSystem.h \
   /home/beza/Desktop/FileSystem/inc/Memento.h \
+  /home/beza/Desktop/FileSystem/inc/StructFile&Directory.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
@@ -450,8 +452,8 @@ CMakeFiles/Project1.dir/src/FileSystem.cpp.o: /home/beza/Desktop/FileSystem/src/
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h
 
 CMakeFiles/Project1.dir/src/Memento.cpp.o: /home/beza/Desktop/FileSystem/src/Memento.cpp \
-  /home/beza/Desktop/FileSystem/inc/FileSystem.h \
   /home/beza/Desktop/FileSystem/inc/Memento.h \
+  /home/beza/Desktop/FileSystem/inc/StructFile&Directory.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
@@ -465,7 +467,6 @@ CMakeFiles/Project1.dir/src/Memento.cpp.o: /home/beza/Desktop/FileSystem/src/Mem
   /usr/include/c++/13/bits/basic_string.tcc \
   /usr/include/c++/13/bits/char_traits.h \
   /usr/include/c++/13/bits/charconv.h \
-  /usr/include/c++/13/bits/codecvt.h \
   /usr/include/c++/13/bits/concept_check.h \
   /usr/include/c++/13/bits/cpp_type_traits.h \
   /usr/include/c++/13/bits/cxxabi_forced.h \
@@ -474,7 +475,6 @@ CMakeFiles/Project1.dir/src/Memento.cpp.o: /home/beza/Desktop/FileSystem/src/Mem
   /usr/include/c++/13/bits/exception.h \
   /usr/include/c++/13/bits/exception_defines.h \
   /usr/include/c++/13/bits/exception_ptr.h \
-  /usr/include/c++/13/bits/fstream.tcc \
   /usr/include/c++/13/bits/functexcept.h \
   /usr/include/c++/13/bits/functional_hash.h \
   /usr/include/c++/13/bits/hash_bytes.h \
@@ -500,7 +500,6 @@ CMakeFiles/Project1.dir/src/Memento.cpp.o: /home/beza/Desktop/FileSystem/src/Mem
   /usr/include/c++/13/bits/range_access.h \
   /usr/include/c++/13/bits/refwrap.h \
   /usr/include/c++/13/bits/requires_hosted.h \
-  /usr/include/c++/13/bits/sstream.tcc \
   /usr/include/c++/13/bits/std_abs.h \
   /usr/include/c++/13/bits/stl_algobase.h \
   /usr/include/c++/13/bits/stl_bvector.h \
@@ -540,7 +539,6 @@ CMakeFiles/Project1.dir/src/Memento.cpp.o: /home/beza/Desktop/FileSystem/src/Mem
   /usr/include/c++/13/ext/numeric_traits.h \
   /usr/include/c++/13/ext/string_conversions.h \
   /usr/include/c++/13/ext/type_traits.h \
-  /usr/include/c++/13/fstream \
   /usr/include/c++/13/initializer_list \
   /usr/include/c++/13/ios \
   /usr/include/c++/13/iosfwd \
@@ -550,9 +548,7 @@ CMakeFiles/Project1.dir/src/Memento.cpp.o: /home/beza/Desktop/FileSystem/src/Mem
   /usr/include/c++/13/new \
   /usr/include/c++/13/ostream \
   /usr/include/c++/13/pstl/pstl_config.h \
-  /usr/include/c++/13/sstream \
   /usr/include/c++/13/stdexcept \
-  /usr/include/c++/13/stdlib.h \
   /usr/include/c++/13/streambuf \
   /usr/include/c++/13/string \
   /usr/include/c++/13/string_view \
@@ -637,10 +633,8 @@ CMakeFiles/Project1.dir/src/Memento.cpp.o: /home/beza/Desktop/FileSystem/src/Mem
   /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/atomic_word.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/c++allocator.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
-  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/c++locale.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/cpu_defines.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/ctype_base.h \
@@ -659,13 +653,17 @@ CMakeFiles/Project1.dir/src/Memento.cpp.o: /home/beza/Desktop/FileSystem/src/Mem
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h
 
 CMakeFiles/Project1.dir/src/main.cpp.o: /home/beza/Desktop/FileSystem/src/main.cpp \
+  /home/beza/Desktop/FileSystem/inc/Commands.h \
   /home/beza/Desktop/FileSystem/inc/FileSystem.h \
   /home/beza/Desktop/FileSystem/inc/Memento.h \
+  /home/beza/Desktop/FileSystem/inc/StructFile&Directory.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
+  /usr/include/c++/13/array \
   /usr/include/c++/13/backward/binders.h \
   /usr/include/c++/13/bit \
+  /usr/include/c++/13/bits/algorithmfwd.h \
   /usr/include/c++/13/bits/alloc_traits.h \
   /usr/include/c++/13/bits/allocator.h \
   /usr/include/c++/13/bits/basic_ios.h \
@@ -679,6 +677,7 @@ CMakeFiles/Project1.dir/src/main.cpp.o: /home/beza/Desktop/FileSystem/src/main.c
   /usr/include/c++/13/bits/cpp_type_traits.h \
   /usr/include/c++/13/bits/cxxabi_forced.h \
   /usr/include/c++/13/bits/cxxabi_init_exception.h \
+  /usr/include/c++/13/bits/enable_special_members.h \
   /usr/include/c++/13/bits/erase_if.h \
   /usr/include/c++/13/bits/exception.h \
   /usr/include/c++/13/bits/exception_defines.h \
@@ -687,6 +686,8 @@ CMakeFiles/Project1.dir/src/main.cpp.o: /home/beza/Desktop/FileSystem/src/main.c
   /usr/include/c++/13/bits/functexcept.h \
   /usr/include/c++/13/bits/functional_hash.h \
   /usr/include/c++/13/bits/hash_bytes.h \
+  /usr/include/c++/13/bits/hashtable.h \
+  /usr/include/c++/13/bits/hashtable_policy.h \
   /usr/include/c++/13/bits/invoke.h \
   /usr/include/c++/13/bits/ios_base.h \
   /usr/include/c++/13/bits/istream.tcc \
@@ -711,16 +712,20 @@ CMakeFiles/Project1.dir/src/main.cpp.o: /home/beza/Desktop/FileSystem/src/main.c
   /usr/include/c++/13/bits/requires_hosted.h \
   /usr/include/c++/13/bits/sstream.tcc \
   /usr/include/c++/13/bits/std_abs.h \
+  /usr/include/c++/13/bits/std_function.h \
+  /usr/include/c++/13/bits/stl_algo.h \
   /usr/include/c++/13/bits/stl_algobase.h \
   /usr/include/c++/13/bits/stl_bvector.h \
   /usr/include/c++/13/bits/stl_construct.h \
   /usr/include/c++/13/bits/stl_function.h \
+  /usr/include/c++/13/bits/stl_heap.h \
   /usr/include/c++/13/bits/stl_iterator.h \
   /usr/include/c++/13/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/13/bits/stl_iterator_base_types.h \
   /usr/include/c++/13/bits/stl_map.h \
   /usr/include/c++/13/bits/stl_multimap.h \
   /usr/include/c++/13/bits/stl_pair.h \
+  /usr/include/c++/13/bits/stl_tempbuf.h \
   /usr/include/c++/13/bits/stl_tree.h \
   /usr/include/c++/13/bits/stl_uninitialized.h \
   /usr/include/c++/13/bits/stl_vector.h \
@@ -728,6 +733,8 @@ CMakeFiles/Project1.dir/src/main.cpp.o: /home/beza/Desktop/FileSystem/src/main.c
   /usr/include/c++/13/bits/streambuf_iterator.h \
   /usr/include/c++/13/bits/string_view.tcc \
   /usr/include/c++/13/bits/stringfwd.h \
+  /usr/include/c++/13/bits/uniform_int_dist.h \
+  /usr/include/c++/13/bits/unordered_map.h \
   /usr/include/c++/13/bits/uses_allocator.h \
   /usr/include/c++/13/bits/uses_allocator_args.h \
   /usr/include/c++/13/bits/utility.h \
@@ -735,6 +742,7 @@ CMakeFiles/Project1.dir/src/main.cpp.o: /home/beza/Desktop/FileSystem/src/main.c
   /usr/include/c++/13/cctype \
   /usr/include/c++/13/cerrno \
   /usr/include/c++/13/clocale \
+  /usr/include/c++/13/compare \
   /usr/include/c++/13/cstddef \
   /usr/include/c++/13/cstdio \
   /usr/include/c++/13/cstdlib \
@@ -750,6 +758,7 @@ CMakeFiles/Project1.dir/src/main.cpp.o: /home/beza/Desktop/FileSystem/src/main.c
   /usr/include/c++/13/ext/string_conversions.h \
   /usr/include/c++/13/ext/type_traits.h \
   /usr/include/c++/13/fstream \
+  /usr/include/c++/13/functional \
   /usr/include/c++/13/initializer_list \
   /usr/include/c++/13/ios \
   /usr/include/c++/13/iosfwd \
@@ -769,6 +778,7 @@ CMakeFiles/Project1.dir/src/main.cpp.o: /home/beza/Desktop/FileSystem/src/main.c
   /usr/include/c++/13/tuple \
   /usr/include/c++/13/type_traits \
   /usr/include/c++/13/typeinfo \
+  /usr/include/c++/13/unordered_map \
   /usr/include/c++/13/vector \
   /usr/include/ctype.h \
   /usr/include/endian.h \
@@ -996,6 +1006,8 @@ CMakeFiles/Project1.dir/src/main.cpp.o: /home/beza/Desktop/FileSystem/src/main.c
 
 /usr/include/ctype.h:
 
+/usr/include/c++/13/vector:
+
 /usr/include/c++/13/bits/fstream.tcc:
 
 /usr/include/c++/13/bits/node_handle.h:
@@ -1032,9 +1044,17 @@ CMakeFiles/Project1.dir/src/main.cpp.o: /home/beza/Desktop/FileSystem/src/main.c
 
 /usr/include/c++/13/string_view:
 
-/usr/include/errno.h:
+/usr/include/c++/13/bits/nested_exception.h:
 
-/usr/include/c++/13/bits/functional_hash.h:
+/usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h:
+
+/usr/include/c++/13/bits/basic_ios.tcc:
+
+/usr/include/c++/13/bits/stl_multimap.h:
+
+/usr/include/c++/13/bits/istream.tcc:
+
+/usr/include/c++/13/bits/exception_ptr.h:
 
 /usr/include/c++/13/bits/algorithmfwd.h:
 
@@ -1055,12 +1075,6 @@ CMakeFiles/Project1.dir/src/main.cpp.o: /home/beza/Desktop/FileSystem/src/main.c
 /usr/include/c++/13/streambuf:
 
 /usr/include/c++/13/bits/exception.h:
-
-/usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h:
-
-/usr/include/c++/13/bits/basic_ios.tcc:
-
-/usr/include/c++/13/bits/nested_exception.h:
 
 /usr/include/c++/13/bits/sstream.tcc:
 
@@ -1090,31 +1104,15 @@ CMakeFiles/Project1.dir/src/main.cpp.o: /home/beza/Desktop/FileSystem/src/main.c
 
 /home/beza/Desktop/FileSystem/src/Commands.cpp:
 
-/home/beza/Desktop/FileSystem/inc/Memento.h:
-
 /usr/include/c++/13/unordered_map:
 
-/usr/include/c++/13/bits/stl_multimap.h:
+/usr/include/errno.h:
 
-/usr/include/c++/13/bits/istream.tcc:
+/usr/include/c++/13/bits/functional_hash.h:
 
-/usr/include/c++/13/bits/exception_ptr.h:
+/home/beza/Desktop/FileSystem/inc/Memento.h:
 
-/usr/include/c++/13/bits/codecvt.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
-
-/usr/include/c++/13/bits/stl_tempbuf.h:
-
-/usr/include/c++/13/bits/stl_vector.h:
-
-/usr/include/c++/13/bits/locale_facets.tcc:
-
-/usr/include/c++/13/bits/requires_hosted.h:
-
-/usr/include/c++/13/bits/string_view.tcc:
-
-/usr/include/c++/13/backward/binders.h:
+/home/beza/Desktop/FileSystem/inc/StructFile&Directory.h:
 
 /usr/include/c++/13/bits/enable_special_members.h:
 
@@ -1125,6 +1123,22 @@ CMakeFiles/Project1.dir/src/main.cpp.o: /home/beza/Desktop/FileSystem/src/main.c
 /usr/include/x86_64-linux-gnu/sys/single_threaded.h:
 
 /usr/include/c++/13/type_traits:
+
+/usr/include/c++/13/bits/locale_facets.tcc:
+
+/usr/include/c++/13/bits/requires_hosted.h:
+
+/usr/include/c++/13/bits/string_view.tcc:
+
+/usr/include/c++/13/backward/binders.h:
+
+/usr/include/c++/13/bits/codecvt.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
+
+/usr/include/c++/13/bits/stl_tempbuf.h:
+
+/usr/include/c++/13/bits/stl_vector.h:
 
 /usr/include/x86_64-linux-gnu/bits/endianness.h:
 
@@ -1160,15 +1174,13 @@ CMakeFiles/Project1.dir/src/main.cpp.o: /home/beza/Desktop/FileSystem/src/main.c
 
 /usr/include/c++/13/bits/erase_if.h:
 
-/usr/include/c++/13/vector:
-
 /usr/include/c++/13/cstdlib:
 
 /usr/include/c++/13/bits/std_function.h:
 
-/usr/include/c++/13/bits/std_abs.h:
-
 /usr/include/c++/13/bits/postypes.h:
+
+/usr/include/c++/13/bits/std_abs.h:
 
 /usr/include/c++/13/bits/uses_allocator.h:
 

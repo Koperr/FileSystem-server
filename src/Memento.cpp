@@ -33,10 +33,15 @@ void CareTaker::AddMemento(Memento memento)
     mementoList.push_back(memento);
 }
 
-Memento CareTaker::GetMemento(int index)
+Memento CareTaker::GetMemento(std::vector<Memento>::size_type index)
 {
     if(index < mementoList.size())
         return mementoList[index];
     else
+    {
+        // TODO 
+        // OBSLUZYC TEN PRZYPADEK, TO CO JEST PONIZEJ TO TYMCZASOWA PROWIZORKA
         std::cout << "Cannot get previous state!\n";
+        return mementoList[0];
+    }
 }

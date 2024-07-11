@@ -1,11 +1,31 @@
 #include "Commands.h"
+#include "FileSystem.h"
+
+Commands::Commands(FileSystem* filesystem)
+    :   commandMap{
+        {"exit",    [this]() {Exit();    }},
+        {"mkdir",   [this]() {Mkdir();   }},
+        {"rmdir",   [this]() {Rmdir();   }},
+        {"rm",      [this]() {Rm();      }},
+        {"cd",      [this]() {Cd();      }},
+        {"ls",      [this]() {Ls();      }},
+        {"pwd",     [this]() {Pwd();     }},
+        {"touch",   [this]() {Touch();   }},
+        {"cat",     [this]() {Cat();     }},
+        {"echo",    [this]() {Echo();    }},
+        {"undo",    [this]() {Undo();    }},
+        {"mv",      [this]() {Mv();      }},
+        {"printlog",[this]() {PrintLog();}}
+    }, fs(filesystem)
+    {
+    }
 
 
 void Commands::getFlags(const std::string& str)
 {
     std::string firstFlag;
     std::string substring;
-    int spacePos = str.find(" ");
+    size_t spacePos = str.find(" ");
     int length = str.length() - spacePos;
 
     // If there is no spacepos, sets the value of flag to substr of everything exept the first word
@@ -32,14 +52,14 @@ void Commands::getFlags(const std::string& str)
             m_Flag1 = "0";
             m_Flag2 = "0";
         }
-    std::cout << "Flag 1 [" << m_Flag1 << "]\n";
-    std::cout << "Flag 2 [" << m_Flag2 << "]\n";
+    //std::cout << "Flag 1 [" << m_Flag1 << "]\n";
+    //std::cout << "Flag 2 [" << m_Flag2 << "]\n";
 
 }
 
 void Commands::getCommand(const std::string& str)
 {
-    int spacePos = str.find(" ");
+    size_t spacePos = str.find(" ");
 
     if(spacePos != std::string::npos)
         m_Command = str.substr(0, spacePos);
@@ -59,32 +79,33 @@ void Commands::getCommand(const std::string& str)
     else
         std::cout << "[ERROR] Wrong command [" << m_Command << "]\n";
     
-    std::cout << "Command [" << m_Command << "]\n"; 
+    //std::cout << "Command [" << m_Command << "]\n"; 
 }
 
 void Commands::checkInput(const std::string& input)
 {
-    m_Input = input;
+    fs->m_Input = input;
 
     getFlags(input);
 
     getCommand(input);
 }
 
+/*/////////////// COMMAND DECLARATIONS \\\\\\\\\\\\\\\*/
 
 void Commands::Exit()
 {
-    setExit(true);
+    fs->setExit(true);
 }
 
 
 void Commands::Mkdir()
 {
-    if(m_Flag1 != "0")
+    if(m_Flag1 != "0"  && m_Flag1.find("/") == std::string::npos)
     {
-    
+    fs->Log("Made directory named: [" + m_Flag1 + "] in [" + m_currentpath + "]");
     std::string dirname = m_Flag1;
-    CreateDirectory(m_currentPath, dirname);
+    fs->CreateDirectory(fs->m_currentPath, dirname);
     }
 }
 
@@ -92,8 +113,9 @@ void Commands::Rmdir()
 {
     if(m_Flag1 != "0")
     {
+    fs->Log("Removed directory named: [" + m_Flag1 + "] in [" + m_currentpath + "]");
     std::string dirname = m_Flag1;
-    DeleteDirectory(m_currentPath, dirname);
+    fs->DeleteDirectory(fs->m_currentPath, dirname);
     }
 }
 
@@ -101,39 +123,47 @@ void Commands::Rm()
 {
     if(m_Flag1 != "0")
     {
+    fs->Log("Removed File named: [" + m_Flag1 + "] in [" + m_currentpath + "]");
     std::string filename = m_Flag1;
-    DeleteFile(m_currentPath, filename);
+    fs->DeleteFile(fs->m_currentPath, filename);
     }
 }
 
 void Commands::Cd()
 {
-    if(m_Flag1 != "0" && m_Flag1 == ".." && m_currentPath != "/")
+    std::string tempStr1 = m_currentpath;
+    if(m_Flag1 != "0" && m_Flag1 == ".." && fs->m_currentPath != "/")
     {
-        Directory* currentDir = navigateTo(m_currentPath);
+        Directory* currentDir = fs->navigateTo(fs->m_currentPath);
         size_t strSizeToErase = currentDir->name.length() + 1;
-        m_currentPath.erase(m_currentPath.size() - strSizeToErase);
+        fs->m_currentPath.erase(fs->m_currentPath.size() - strSizeToErase);
+        fs->Log("Changed directory from: [" + tempStr1 + "] to [" + m_currentpath + "]");
     }
     else if(m_Flag1 != "0")
     {
         std::string newPath;
-        if(m_currentPath == "/")
-            newPath = m_currentPath + m_Flag1 + "/";
+        if(fs->m_currentPath == "/")
+        {
+            newPath = fs->m_currentPath + m_Flag1 + "/";
+        }
         else
-            newPath = m_currentPath + m_Flag1 + "/";
+        {
+            newPath = fs->m_currentPath + m_Flag1 + "/";
+        }
 
-        Directory* targetDir = navigateTo(newPath);
+        Directory* targetDir = fs->navigateTo(newPath);
         if(targetDir)
         {
-            m_currentPath = newPath;
-            std::cout << "Changed directory to: [" << m_currentPath << "]\n";
+            fs->m_currentPath = newPath;
+            std::cout << "Changed directory to: [" << fs->m_currentPath << "]\n";
+            fs->Log("Changed directory from: [" + tempStr1 + "] to [" + m_currentpath + "]");
         }
         else
         {
             std::cout << "Wrong path, try again\n";
         }
     }
-    else if(m_currentPath == "/")
+    else if(fs->m_currentPath == "/")
         std::cout << "You can't use this command while being at root\n";
     else
         std::cout << "Wrong path, try again\n";
@@ -142,10 +172,10 @@ void Commands::Cd()
 
 void Commands::Ls()
 {
-    Directory* dir = navigateTo(m_currentPath);
+    Directory* dir = fs->navigateTo(fs->m_currentPath);
     if(dir)
     {
-        std::cout << "Listing contents of: [" << m_currentPath << "]\n";
+        std::cout << "Listing contents of current dir: [" << fs->m_currentPath << "]\n";
         printf("\033[1;32m");
         for(auto const& folder : dir->subdirectories)
             std::cout << folder.first << std::endl;
@@ -154,23 +184,26 @@ void Commands::Ls()
             std::cout << file.first << std::endl;
         printf("\033[0;31m");
 
+        fs->Log("Listed content of [" + fs->m_currentPath + "]");
     }
     else
-        std::cout << "Current path is invalid: [" << m_currentPath << "]\n";
+        std::cout << "Current path is invalid: [" << fs->m_currentPath << "]\n";
 
 }
 
 void Commands::Pwd()
 {
-    std::cout << "Working directory: [" << m_currentPath << "]\n";
+    std::cout << "Working directory: [" << fs->m_currentPath << "]\n";
+    fs->Log("Printed working directory: [" + fs->m_currentPath + "]");
 }
 
 void Commands::Touch()
 {
-    if(m_Flag1 != "0")
+    if(m_Flag1 != "0" && m_Flag1.find("/") == std::string::npos)
     {
-        CreateFile(m_currentPath, m_Flag1);
-        std::cout << "created file named: [" << m_Flag1 << "] in directory: [" << m_currentPath << "]\n";
+        fs->CreateFile(fs->m_currentPath, m_Flag1);
+        std::cout << "created file named: [" << m_Flag1 << "] in directory: [" << fs->m_currentPath << "]\n";
+        fs->Log("Created file named: [" + m_Flag1 + "] in [" + m_currentpath + "]");
     }
     else
         std::cout << "Wrong filename: [" << m_Flag1 << "]\n";
@@ -181,10 +214,11 @@ void Commands::Cat()
 {
     if(m_Flag1 != "0")
     {
-        std::string content = ReadFile(m_currentPath, m_Flag1);
+        std::string content = fs->ReadFile(fs->m_currentPath, m_Flag1);
         printf("\033[1;33m");
         std::cout << content << std::endl;
         printf("\033[0;31m");
+        fs->Log("Printed content of file: [" + m_Flag1 + "]");
     }
     else
         std::cout << "Wrong filename: [" << m_Flag1 << "]\n";
@@ -194,7 +228,8 @@ void Commands::Echo()
 {
     if(m_Flag1 != "0" && m_Flag2 != "0")
     {
-        WriteFile(m_currentPath, m_Flag1, m_Flag2);
+        fs->WriteFile(fs->m_currentPath, m_Flag1, m_Flag2);
+        fs->Log("Writed tofile named: [" + m_Flag1 + "] in: [" + m_currentpath + "], the new content is: [" + m_Flag2 + "]");
     }
     else
         std::cout << "Wrong flags!\n";
@@ -202,12 +237,26 @@ void Commands::Echo()
 
 void Commands::Undo()
 {
+    if(caretaker.mementoList.size() > 0)
+    {
+        originator.GetStateFromMemento(caretaker.GetMemento(caretaker.mementoList.size() - 1));
+        fs->root = originator.getState();
 
+        std::cout << "Undo operation performed\n";
+        caretaker.mementoList.pop_back();
+
+        fs->Log("Used UNDO operation");
+    }
+    else
+    {
+        std::cout << "No operation to undo\n";
+    }
 }
 
 void Commands::Mv()
 {
-    Directory* dir = navigateTo(m_currentPath);
+
+    Directory* dir = fs->navigateTo(fs->m_currentPath);
     if(dir && m_Flag1 != "0" && m_Flag2 != "0")
     {
         std::cout << "command mv\n";
@@ -219,6 +268,7 @@ void Commands::Mv()
             subdir.name = m_Flag2;
             dir->subdirectories.erase(subdirIt);
             dir->subdirectories[m_Flag2] = subdir;
+            fs->Log("The name of: [" + m_Flag1 + "] directory in [" + m_currentpath + "] was changed to[" + m_Flag2 + "]");
         }
 
 
@@ -229,6 +279,13 @@ void Commands::Mv()
             file.name = m_Flag2;
             dir->files.erase(fileIt);
             dir->files[m_Flag2] = file;
+            fs->Log("The name of: [" + m_Flag1 + "] file in [" + m_currentpath + "] was changed to[" + m_Flag2 + "]");
         }
     }
+}
+
+void Commands::PrintLog()
+{
+    std::cout << "printed log\n";
+    fs->PrintLog();
 }

@@ -1,29 +1,18 @@
 #pragma once
 
-#include "FileSystem.h"
-
 #include <map>
+#include <iostream>
+#include <string>
 #include <functional>
 
+#include "Memento.h"
 
-class Commands : public FileSystem
+class FileSystem; // Forward dec
+
+class Commands
 {
 public:
-    Commands()
-    : commandMap{
-        {"exit",  [this]() {Exit(); }},
-        {"mkdir", [this]() {Mkdir();}},
-        {"rmdir", [this]() {Rmdir();}},
-        {"rm",    [this]() {Rm();   }},
-        {"cd",    [this]() {Cd();   }},
-        {"ls",    [this]() {Ls();   }},
-        {"pwd",   [this]() {Pwd();  }},
-        {"touch", [this]() {Touch();}},
-        {"cat",   [this]() {Cat();  }},
-        {"echo",  [this]() {Echo(); }},
-        {"undo",  [this]() {Undo(); }},
-        {"mv",    [this]() {Mv(); }}
-    } {}
+    Commands(FileSystem* fs);
 
     void checkInput(const std::string& input);
     void getCommand(const std::string& str);
@@ -41,12 +30,17 @@ public:
     void Echo();
     void Undo();
     void Mv();
+    void PrintLog();
 
 
+    std::string m_currentpath;
 private:
     std::map<std::string, std::function<void()>> commandMap;
     
+
     std::string m_Command;
     std::string m_Flag1;
     std::string m_Flag2;
+
+    FileSystem* fs;
 };

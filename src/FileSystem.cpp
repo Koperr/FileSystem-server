@@ -1,19 +1,10 @@
 #include "FileSystem.h"
-#include "Commands.h"
 
-Commands cmd;
+bool FileSystem::m_Exit = false;
 
 Originator originator;
 CareTaker caretaker;
 
-bool FileSystem::m_Exit = false;
-
-
-FileSystem::FileSystem()
-{
-    root.name = "/";
-    m_currentPath = root.name;
-}
 
 
 void FileSystem::run()
@@ -22,8 +13,8 @@ void FileSystem::run()
     {
         // https://man7.org/linux/man-pages/man5/terminal-colors.d.5.html
         printf("\033[36;1m");
-        std::cout << cmd.m_currentPath;
-        printf("\033[0;36m ");
+        std::cout << m_currentPath;
+        printf("\033[35m $ \033[0;36m");
         std::getline(std::cin, m_Input);
         printf("\033[31m");
         cmd.checkInput(m_Input);
@@ -39,6 +30,7 @@ void FileSystem::CreateFile(const std::string& path, const std::string& filename
     {
         originator.setState(*dir);
         caretaker.AddMemento(originator.SaveStateToMemento());
+
         dir->files[filename] = {filename, ""};
     }
 }
@@ -47,6 +39,9 @@ void FileSystem::DeleteFile(const std::string& path, const std::string& filename
     Directory* dir = navigateTo(path);
     if (dir)
     {
+        originator.setState(root);
+        caretaker.AddMemento(originator.SaveStateToMemento());
+
         dir->files.erase(filename);
     }
 }
@@ -57,7 +52,11 @@ void FileSystem::CreateDirectory(const std::string& path, const std::string& dir
     Directory* dir = navigateTo(path);
     if(dir)
     {
+        originator.setState(root);
+        caretaker.AddMemento(originator.SaveStateToMemento());
+
         dir->subdirectories[dirname] = {dirname};
+        //dir->subdirectories[dirname].path = path + dirname + "/";
     }
 }
 void FileSystem::DeleteDirectory(const std::string& path, const std::string& dirname)
@@ -65,6 +64,9 @@ void FileSystem::DeleteDirectory(const std::string& path, const std::string& dir
     Directory* dir = navigateTo(path);
     if(dir)
     {
+        originator.setState(*dir);
+        caretaker.AddMemento(originator.SaveStateToMemento());
+
         dir->subdirectories.erase(dirname);
     }
 }
@@ -75,6 +77,9 @@ void FileSystem::WriteFile(const std::string& path, const std::string& filename,
     Directory* dir = navigateTo(path);
     if(dir && dir->files.find(filename) != dir->files.end())
     {
+        originator.setState(*dir);
+        caretaker.AddMemento(originator.SaveStateToMemento());
+        
         dir->files[filename].content = content;
     }
 }
@@ -89,6 +94,7 @@ std::string FileSystem::ReadFile(const std::string& path, const std::string& fil
     }
     return "";
 }
+
 
 
 Directory* FileSystem::navigateTo(const std::string& path)
@@ -114,4 +120,41 @@ Directory* FileSystem::navigateTo(const std::string& path)
         }
     }
     return current;
+}
+
+void FileSystem::Log(const std::string& content)
+{
+    std::fstream file("Log.txt", std::ios::out | std::ios::app);
+
+    if(!file.is_open())
+    {
+        std::cout << "Couldnt open Log.txt\n";
+        return;
+    }
+
+    file << std::endl << content << std::endl;
+
+    file.close();
+}
+
+void FileSystem::PrintLog()
+{
+    std::fstream file("Log.txt", std::ios::in);
+
+    if(!file.is_open())
+    {
+        std::cout << "Couldnt open Log.txt\n";
+        return;
+    }
+
+    logContent = "";
+
+
+    std::string line;
+
+    while(std::getline(file, line))
+    {
+        logContent += line;
+    }
+    std::cout << logContent << std::endl;
 }
