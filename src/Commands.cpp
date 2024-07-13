@@ -21,7 +21,7 @@ Commands::Commands(FileSystem* filesystem)
     }
 
 
-void Commands::getFlags(const std::string& str)
+void Commands::GetFlags(const std::string& str)
 {
     std::string firstFlag;
     std::string substring;
@@ -57,7 +57,7 @@ void Commands::getFlags(const std::string& str)
 
 }
 
-void Commands::getCommand(const std::string& str)
+void Commands::GetCommand(const std::string& str)
 {
     size_t spacePos = str.find(" ");
 
@@ -82,26 +82,37 @@ void Commands::getCommand(const std::string& str)
     //std::cout << "Command [" << m_Command << "]\n"; 
 }
 
-void Commands::checkInput(const std::string& input)
+void Commands::CheckInput(const std::string& input)
 {
     fs->m_Input = input;
 
-    getFlags(input);
+    GetFlags(input);
 
-    getCommand(input);
+    GetCommand(input);
+}
+
+bool Commands::CheckForbiddenWords(const std::string& str)
+{
+    for(auto it : v_ForbiddenWords)
+    {
+        if(str.find(it) == std::string::npos)
+            return true;
+        else
+            return false;
+    }
 }
 
 /*/////////////// COMMAND DECLARATIONS \\\\\\\\\\\\\\\*/
 
 void Commands::Exit()
 {
-    fs->setExit(true);
+    fs->SetExit(true);
 }
 
 
 void Commands::Mkdir()
 {
-    if(m_Flag1 != "0"  && m_Flag1.find("/") == std::string::npos)
+    if(m_Flag1 != "0"  && CheckForbiddenWords(m_Flag2))
     {
     fs->Log("Made directory named: [" + m_Flag1 + "] in [" + m_currentpath + "]");
     std::string dirname = m_Flag1;
@@ -134,7 +145,7 @@ void Commands::Cd()
     std::string tempStr1 = m_currentpath;
     if(m_Flag1 != "0" && m_Flag1 == ".." && fs->m_currentPath != "/")
     {
-        Directory* currentDir = fs->navigateTo(fs->m_currentPath);
+        Directory* currentDir = fs->NavigateTo(fs->m_currentPath);
         size_t strSizeToErase = currentDir->name.length() + 1;
         fs->m_currentPath.erase(fs->m_currentPath.size() - strSizeToErase);
         fs->Log("Changed directory from: [" + tempStr1 + "] to [" + m_currentpath + "]");
@@ -151,7 +162,7 @@ void Commands::Cd()
             newPath = fs->m_currentPath + m_Flag1 + "/";
         }
 
-        Directory* targetDir = fs->navigateTo(newPath);
+        Directory* targetDir = fs->NavigateTo(newPath);
         if(targetDir)
         {
             fs->m_currentPath = newPath;
@@ -172,7 +183,7 @@ void Commands::Cd()
 
 void Commands::Ls()
 {
-    Directory* dir = fs->navigateTo(fs->m_currentPath);
+    Directory* dir = fs->NavigateTo(fs->m_currentPath);
     if(dir)
     {
         std::cout << "Listing contents of current dir: [" << fs->m_currentPath << "]\n";
@@ -199,7 +210,7 @@ void Commands::Pwd()
 
 void Commands::Touch()
 {
-    if(m_Flag1 != "0" && m_Flag1.find("/") == std::string::npos)
+    if(m_Flag1 != "0" && CheckForbiddenWords(m_Flag2))
     {
         fs->CreateFile(fs->m_currentPath, m_Flag1);
         std::cout << "created file named: [" << m_Flag1 << "] in directory: [" << fs->m_currentPath << "]\n";
@@ -256,7 +267,7 @@ void Commands::Undo()
 void Commands::Mv()
 {
 
-    Directory* dir = fs->navigateTo(fs->m_currentPath);
+    Directory* dir = fs->NavigateTo(fs->m_currentPath);
     if(dir && m_Flag1 != "0" && m_Flag2 != "0")
     {
         std::cout << "command mv\n";

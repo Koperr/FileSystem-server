@@ -4,7 +4,7 @@ int main()
 {
     FileSystem fsys;
 
-    fsys.run();
+    fsys.Run();
 }
 
 // przed zabawa w gita 1

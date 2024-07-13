@@ -19,6 +19,7 @@ public:
     FileSystem()
         :cmd(this)
     {
+        m_Exit = false;
         root.name = "/";
         m_currentPath = root.name;
     }
@@ -37,8 +38,8 @@ public:
         file.close();
     }
 
-    static void setExit(bool b) { m_Exit = b; }
-    void run();
+    void SetExit(bool b) { m_Exit = b; }
+    void Run();
 
     void CreateFile(const std::string& path, const std::string& filename);
     void DeleteFile(const std::string& path, const std::string& filename);
@@ -46,7 +47,7 @@ public:
     void DeleteDirectory(const std::string& path, const std::string& dirname);
     void WriteFile(const std::string& path, const std::string& filename, const std::string& content);
     std::string ReadFile(const std::string& path, const std::string& filename);
-    Directory* navigateTo(const std::string& path);
+    Directory* NavigateTo(const std::string& path);
 
     void Log(const std::string& content);
     void PrintLog();
@@ -59,7 +60,7 @@ public:
 protected:
 
 private:
-    static bool m_Exit;
+    bool m_Exit;
 
     std::fstream file;
     std::string logContent;

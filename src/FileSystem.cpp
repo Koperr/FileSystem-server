@@ -1,13 +1,10 @@
 #include "FileSystem.h"
 
-bool FileSystem::m_Exit = false;
-
 Originator originator;
 CareTaker caretaker;
 
 
-
-void FileSystem::run()
+void FileSystem::Run()
 {
     while(!m_Exit)
     {
@@ -17,15 +14,14 @@ void FileSystem::run()
         printf("\033[35m $ \033[0;36m");
         std::getline(std::cin, m_Input);
         printf("\033[31m");
-        cmd.checkInput(m_Input);
+        cmd.CheckInput(m_Input);
     }
-    
 }
 
 
 void FileSystem::CreateFile(const std::string& path, const std::string& filename)
 {
-    Directory* dir = navigateTo(path);
+    Directory* dir = NavigateTo(path);
     if (dir)
     {
         originator.setState(*dir);
@@ -36,7 +32,7 @@ void FileSystem::CreateFile(const std::string& path, const std::string& filename
 }
 void FileSystem::DeleteFile(const std::string& path, const std::string& filename)
 {
-    Directory* dir = navigateTo(path);
+    Directory* dir = NavigateTo(path);
     if (dir)
     {
         originator.setState(root);
@@ -49,7 +45,7 @@ void FileSystem::DeleteFile(const std::string& path, const std::string& filename
 
 void FileSystem::CreateDirectory(const std::string& path, const std::string& dirname)
 {
-    Directory* dir = navigateTo(path);
+    Directory* dir = NavigateTo(path);
     if(dir)
     {
         originator.setState(root);
@@ -61,7 +57,7 @@ void FileSystem::CreateDirectory(const std::string& path, const std::string& dir
 }
 void FileSystem::DeleteDirectory(const std::string& path, const std::string& dirname)
 {
-    Directory* dir = navigateTo(path);
+    Directory* dir = NavigateTo(path);
     if(dir)
     {
         originator.setState(*dir);
@@ -74,7 +70,7 @@ void FileSystem::DeleteDirectory(const std::string& path, const std::string& dir
 
 void FileSystem::WriteFile(const std::string& path, const std::string& filename, const std::string& content)
 {
-    Directory* dir = navigateTo(path);
+    Directory* dir = NavigateTo(path);
     if(dir && dir->files.find(filename) != dir->files.end())
     {
         originator.setState(*dir);
@@ -87,7 +83,7 @@ void FileSystem::WriteFile(const std::string& path, const std::string& filename,
 
 std::string FileSystem::ReadFile(const std::string& path, const std::string& filename)
 {
-    Directory* dir = navigateTo(path);
+    Directory* dir = NavigateTo(path);
     if(dir && dir->files.find(filename) != dir->files.end())
     {
         return dir->files[filename].content;
@@ -97,7 +93,7 @@ std::string FileSystem::ReadFile(const std::string& path, const std::string& fil
 
 
 
-Directory* FileSystem::navigateTo(const std::string& path)
+Directory* FileSystem::NavigateTo(const std::string& path)
 {
     Directory* current = &root;
     if(path == "/") return current;
