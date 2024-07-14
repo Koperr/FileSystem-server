@@ -5,7 +5,8 @@
 #include <stdlib.h>
 #include <fstream>
 
-//#include "StructFile&Directory.h"
+#include <nlohmann/json.hpp>
+
 #include "Commands.h"
 #include "Memento.h"
 
@@ -48,6 +49,8 @@ public:
     void WriteFile(const std::string& path, const std::string& filename, const std::string& content);
     std::string ReadFile(const std::string& path, const std::string& filename);
     Directory* NavigateTo(const std::string& path);
+
+    nlohmann::json ToJson();
 
     void Log(const std::string& content);
     void PrintLog();

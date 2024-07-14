@@ -118,6 +118,26 @@ Directory* FileSystem::NavigateTo(const std::string& path)
     return current;
 }
 
+nlohmann::json FileSystem::ToJson()
+{
+    std::function<nlohmann::json(const Directory&)> DirToJson;
+    DirToJson = [&DirToJson](const Directory& dir) -> nlohmann::json {
+        nlohmann::json j;
+        j["name"] = dir.name;
+        for(const auto& [name, file] : dir.files)
+        {
+            j["files"].push_back({{"name", file.name}, {"content", file.content}});
+        }
+        for(const auto& [name, subDir] : dir.subdirectories)
+        {
+            j["subdirectories"].push_back(DirToJson(subDir));
+        }
+        return j;
+    };
+
+    return DirToJson(root);
+}
+
 void FileSystem::Log(const std::string& content)
 {
     std::fstream file("Log.txt", std::ios::out | std::ios::app);

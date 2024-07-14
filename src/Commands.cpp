@@ -100,6 +100,7 @@ bool Commands::CheckForbiddenWords(const std::string& str)
         else
             return false;
     }
+    return false;
 }
 
 /*/////////////// COMMAND DECLARATIONS \\\\\\\\\\\\\\\*/
