@@ -50,7 +50,7 @@ public:
     std::string ReadFile(const std::string& path, const std::string& filename);
     Directory* NavigateTo(const std::string& path);
 
-    nlohmann::json ToJson();
+    nlohmann::json ToJson(const std::string& path);
 
     void Log(const std::string& content);
     void PrintLog();
