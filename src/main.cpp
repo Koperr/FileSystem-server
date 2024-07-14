@@ -69,9 +69,16 @@ private:
 
 int main()
 {
-    FileSystem fsys;
+    FileSystem fs;
 
-    fsys.Run();
+    webserver ws = create_webserver(8080);
+    FileSystemHandler fsh(&fs);
+
+    ws.register_resource("/filesystem", &fsh, true);
+    std::cout << "Serwer działa na porcie 8080" << std::endl;
+    ws.start(true);
+
+    //fs.Run();
 }
 
 // przed zabawa w gita 1
