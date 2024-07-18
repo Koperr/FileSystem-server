@@ -1,9 +1,9 @@
-cd "$(dirname "$0")"
-
 git clone https://github.com/etr/libhttpserver.git
 cd libhttpserver
+
+./bootstrap
 mkdir build
 cd build
-cmake ..
+../configure
 make
-sudo make install
+make install

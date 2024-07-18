@@ -60,10 +60,10 @@ public:
     std::string m_Input;
     Directory root;
 
+    bool m_Exit;
 protected:
 
 private:
-    bool m_Exit;
 
     std::fstream file;
     std::string logContent;
