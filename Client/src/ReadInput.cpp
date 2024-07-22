@@ -56,28 +56,22 @@ void ReadInput::SetCommand()
     if(m_Command.empty()) return;
 
     std::cout << "[" << m_Command << "]\n";
-    std::cout << "[" << m_Flag1 << "]\n";
-    std::cout << "[" << m_Flag2 << "]\n";
+    //std::cout << "[" << m_Flag1 << "]\n";
+    //std::cout << "[" << m_Flag2 << "]\n";
 
     // GET
     if(m_Command == "ls" || m_Command == "pwd" || m_Command == "cat" || m_Command == "printlog" || m_Command == "p")
     {
-        std::cout << "GET ";
         response = SendRequest(m_URL, "GET");
-        std::cout << "Send\n";
     }
     else if(m_Command == "cd" || m_Command == "cat" || m_Command == "undo"
-         || m_Command == "touch" || m_Command == "mkdir" || m_Command == "undo")
+         || m_Command == "touch" || m_Command == "mkdir")
     {
-        std::cout << "PUT ";
         response = SendRequest(m_URL, "PUT");
-        std::cout << "Send\n";
     } // DELETE
     else if(m_Command == "rmdir" || m_Command == "rm")
     {
-        std::cout << "DELETE ";
         response = SendRequest(m_URL, "DELETE");
-        std::cout << "Send\n";
     }
     else
     {
@@ -102,7 +96,7 @@ std::string ReadInput::SendRequest(const std::string &url, const std::string &me
     curl = curl_easy_init();
     if (curl)
     {
-        std::cout << "Sending [" << method << "] request to URL: [" << url << "]\n";
+        //std::cout << "Sending [" << method << "] request to URL: [" << url << "]\n";
 
         curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
 
