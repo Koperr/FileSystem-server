@@ -55,7 +55,7 @@ void ReadInput::SetCommand()
 {
     if(m_Command.empty()) return;
 
-    std::cout << "[" << m_Command << "]\n";
+    //std::cout << "[" << m_Command << "]\n";
     //std::cout << "[" << m_Flag1 << "]\n";
     //std::cout << "[" << m_Flag2 << "]\n";
 
