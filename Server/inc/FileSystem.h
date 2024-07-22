@@ -61,13 +61,13 @@ public:
     Directory root;
 
     bool m_Exit;
+    Commands cmd;
+    std::string logContent;
 protected:
 
 private:
 
     std::fstream file;
-    std::string logContent;
 
-    Commands cmd;
 
 };

@@ -1,7 +1,10 @@
 *.log
 *.tmp
 
-bin/
-build/
+Client/bin/
+Client/build/
+
+Server/bin/
+Server/build/
 
 .vscode/

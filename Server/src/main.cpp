@@ -14,58 +14,55 @@ public:
 
     std::shared_ptr<http_response> render_GET(const http_request& req) override
     {
-        std::string path = req.get_arg("path");
-        if (path.empty()) {
-            path = "/";
-        }
-
-        std::cout << "Recieved GET request: path[" << path << "]\n";
-
-        auto jsonResponse = fs->ToJson(path);
-        if (!jsonResponse.empty()) {
-            return std::shared_ptr<http_response>(new string_response(jsonResponse.dump(), 200, "application/json"));
-        } else {
-            return std::shared_ptr<http_response>(new string_response("Directory not found\n", 404));
-        }
-    }
-
-    std::shared_ptr<http_response> render_POST(const http_request& req) override 
-    {
-
         std::string action = req.get_arg("action");
-        std::string path = req.get_arg("path");
-        std::string name = req.get_arg("name");
+        fs->cmd.m_Flag1 = req.get_arg("flag1");
+        fs->cmd.m_Flag2 = req.get_arg("flag2");
 
-        std::cout << "Recieved POST request: action[" << action << "], path[" << path << "], name[" << name << "]\n";
-
-        if (action == "create_file") {
-            fs->CreateFile(path, name);
-        } else if (action == "create_dir") {
-            fs->CreateDirectory(path, name);
-        } else if (action == "write_file") {
-            std::string content = req.get_arg("content");
-            fs->WriteFile(path, name, content);
-        } else {
-            return std::make_shared<string_response>("Invalid action", 400);
+        if(action == "pwd")
+        {
+            fs->cmd.Pwd();
+            return std::make_shared<string_response>("Current working directory: [" + fs->m_currentPath + "]\n", 200);
         }
-
-        return std::make_shared<string_response>("Success", 200);
+        else if(action == "ls")
+        {
+            fs->cmd.Ls();
+            return std::make_shared<string_response>("Content of this dir:\n" + fs->cmd.listOfFiles, 200);
+        }
+        else if(action == "cat")
+        {
+            fs->cmd.Cat();
+            return std::make_shared<string_response>(fs->cmd.content);
+        }
+        else if(action == "printlog")
+        {
+            fs->cmd.PrintLog();
+            return std::make_shared<string_response>(fs->logContent);
+        }
+        else if(action == "p") // to jest do tego, zeby w kazdej lini przed inputem byla obecna sciezka (do celow wizualnych)
+        {
+            return std::make_shared<string_response>(fs->m_currentPath, 200);
+        }
+        else
+        {
+            return std::make_shared<string_response>("Failed to return sth\n", 400);
+        }
     }
 
     std::shared_ptr<http_response> render_DELETE(const http_request& req) override 
     {
-
         std::string action = req.get_arg("action");
-        std::string path = req.get_arg("path");
-        std::string name = req.get_arg("name");
+        fs->cmd.m_Flag1 = req.get_arg("flag1");
 
-        std::cout << "Recieved DELETE request: action[" << action << "], path[" << path << "], name[" << name << "]\n";
-
-        if (action == "delete_file") {
-            fs->DeleteFile(path, name);
-        } else if (action == "delete_dir") {
-            fs->DeleteDirectory(path, name);
-        } else {
+        if (action == "rm") 
+        {
+            fs->DeleteFile(fs->m_currentPath, fs->cmd.m_Flag1);
+            return std::make_shared<string_response>("Deleted file named: " + fs->cmd.m_Flag1, 200);
+        } else if (action == "rmdir") 
+        {
+            fs->DeleteDirectory(fs->m_currentPath, fs->cmd.m_Flag1);
+            return std::make_shared<string_response>("Deleted dir named: " + fs->cmd.m_Flag1, 200);
+        } else 
+        {
             return std::make_shared<string_response>("Invalid action", 400);
         }
 
@@ -75,17 +72,38 @@ public:
     std::shared_ptr<http_response> render_PUT(const http_request& req) override
     {
         std::string action = req.get_arg("action");
-        std::string path = req.get_arg("path");
-        std::string name = req.get_arg("name");
+        fs->cmd.m_Flag1 = req.get_arg("flag1");
+        fs->cmd.m_Flag2 = req.get_arg("flag2");
 
-        std::cout << "Recieved PUT request: action[" << action << "], path[" << path << "], name[" << name << "]\n";
-
-        if (action == "change_dir_name"){
-
-        } else if (action == "change_file_name"){
-
-        } else if (action == "change_file_content"){
-
+        if (action == "mv")
+        {
+            fs->cmd.Mv();
+            return std::make_shared<string_response>("Changed name of file/dir to " + fs->cmd.m_Flag1, 200);
+        } 
+        else if (action == "echo") 
+        {
+            fs->cmd.Echo();
+            return std::make_shared<string_response>("Overwritten file content", 200);
+        }
+        else if (action == "cd")
+        {
+            fs->cmd.Cd();
+            return std::make_shared<string_response>("Changed dir", 200);
+        }
+        else if (action == "touch") 
+        {
+            fs->cmd.Touch();
+            return std::make_shared<string_response>("Created file " + fs->cmd.m_Flag1 + "\n", 200);
+        } 
+        else if (action == "mkdir") 
+        {
+            fs->cmd.Mkdir();
+            return std::make_shared<string_response>("Created directory " + fs->cmd.m_Flag1 + "\n", 200);
+        } 
+        else if (action == "undo")
+        {
+            fs->cmd.Undo();
+            return std::make_shared<string_response>("Undo!", 200);
         }
         return std::make_shared<string_response>("Succes\n", 200);
     }
@@ -133,3 +151,10 @@ int main()
 
 // usuwanie pliku
 // curl -X DELETE "http://localhost:8080/filesystem?action=delete_file&path=/&name=newfile.txt"
+
+// TESTY
+
+// curl "http://localhost:8080/filesystem?action=p"
+// curl -X POST "http://localhost:8080/filesystem?action=mkdir&flag1=dupa&flag2=xd"
+// curl -X PUT "http://localhost:8080/filesystem?action=cd&flag1=dupa&flag2=xd"
+// curl "http://localhost:8080/filesystem?action=pwd"

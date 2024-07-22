@@ -187,13 +187,23 @@ void Commands::Ls()
     Directory* dir = fs->NavigateTo(fs->m_currentPath);
     if(dir)
     {
+        listOfFiles = "";
         std::cout << "Listing contents of current dir: [" << fs->m_currentPath << "]\n";
         printf("\033[1;32m");
+        listOfFiles += "\033[1;32m";
         for(auto const& folder : dir->subdirectories)
+        {
             std::cout << folder.first << std::endl;
+            listOfFiles += folder.first + "\n";
+        }
         printf("\033[1;35m");
+        listOfFiles += "\033[1;35m";
         for(auto const& file : dir->files)
+        {
             std::cout << file.first << std::endl;
+            listOfFiles += file.first + "\n";
+        }
+        listOfFiles += "\033[0m";
         printf("\033[0;31m");
 
         fs->Log("Listed content of [" + fs->m_currentPath + "]");
@@ -229,6 +239,7 @@ void Commands::Cat()
         std::string content = fs->ReadFile(fs->m_currentPath, m_Flag1);
         printf("\033[1;33m");
         std::cout << content << std::endl;
+        this->content = content;
         printf("\033[0;31m");
         fs->Log("Printed content of file: [" + m_Flag1 + "]");
     }

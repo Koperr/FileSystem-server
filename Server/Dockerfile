@@ -25,7 +25,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN scripts/installHttpServer.sh
 
-ENV LD_LIBRARY_PATH="/usr/local/lib:${LD_LIBRARY_PATH}"
+ENV LD_LIBRARY_PATH="/usr/local/lib"
 ENV CXXFLAGS="-I/usr/include"
 
 EXPOSE 8080

@@ -7,6 +7,7 @@
 
 #include "Memento.h"
 
+
 class FileSystem; // Forward dec
 
 class Commands
@@ -35,14 +36,18 @@ public:
     void PrintLog();
 
 
+    std::string m_Flag1;
+    std::string m_Flag2;
+    
     std::string m_currentpath;
+
+    std::string listOfFiles;
+    std::string content;
 private:
     std::map<std::string, std::function<void()>> commandMap;
     
     std::vector<std::string> v_ForbiddenWords { "/", "\\" };
     std::string m_Command;
-    std::string m_Flag1;
-    std::string m_Flag2;
 
     FileSystem* fs;
 };
