@@ -5,7 +5,8 @@
 #include <stdlib.h>
 #include <fstream>
 
-//#include "StructFile&Directory.h"
+#include <nlohmann/json.hpp>
+
 #include "Commands.h"
 #include "Memento.h"
 
@@ -49,6 +50,8 @@ public:
     std::string ReadFile(const std::string& path, const std::string& filename);
     Directory* NavigateTo(const std::string& path);
 
+    nlohmann::json ToJson(const std::string& path);
+
     void Log(const std::string& content);
     void PrintLog();
 
@@ -57,14 +60,14 @@ public:
     std::string m_Input;
     Directory root;
 
+    bool m_Exit;
+    Commands cmd;
+    std::string logContent;
 protected:
 
 private:
-    bool m_Exit;
 
     std::fstream file;
-    std::string logContent;
 
-    Commands cmd;
 
 };

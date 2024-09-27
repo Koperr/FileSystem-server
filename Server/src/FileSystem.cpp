@@ -118,6 +118,24 @@ Directory* FileSystem::NavigateTo(const std::string& path)
     return current;
 }
 
+nlohmann::json FileSystem::ToJson(const std::string& path)
+{
+    Directory* dir = NavigateTo(path);
+    if(!dir) return {};
+
+    nlohmann::json j;
+    for(const auto& subdir : dir->subdirectories)
+    {
+        j["directories"].push_back(subdir.first);
+    }
+    for(const auto& file : dir->files)
+    {
+        j["directories"].push_back(file.first);
+    }
+
+    return j;
+}
+
 void FileSystem::Log(const std::string& content)
 {
     std::fstream file("Log.txt", std::ios::out | std::ios::app);
